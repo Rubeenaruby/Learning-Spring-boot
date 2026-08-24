@@ -15,6 +15,9 @@ Controller handles user requests and coordinates between the Model and the View.
 In Spring MVC, the architecture revolves around a central component called the DispatcherServlet, 
 which acts as the front controller. It delegates requests to appropriate controllers, based on the configured HandlerMapping, and returns a ModelAndView object to be rendered by a ViewResolver.
 
+<img width="602" height="373" alt="image" src="https://github.com/user-attachments/assets/ce2ead1c-59a5-4f86-b93c-c18d66eef1da" />
+
+
 2. Understanding the DispatcherServlet
 The DispatcherServlet is the core of Spring MVC architecture. It acts as the front controller, managing all incoming HTTP requests and routing them to appropriate handlers or controllers.
 
