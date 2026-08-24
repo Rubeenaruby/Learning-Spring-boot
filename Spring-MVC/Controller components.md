@@ -16,10 +16,11 @@ public class HomeController {
     @RequestMapping("/home")
     public String showHomePage(Model model) {
         model.addAttribute("message", "Welcome to the Home Page!");
-        return "home"; // This refers to home.jsp or another view
+        return "home";
     }
 }
 ```
+
 Explanation:
 
 The @Controller annotation marks the HomeController class as a Spring MVC controller.
@@ -104,7 +105,6 @@ public class SearchController {
         return "Search results for: " + query;
     }
 }
-
 ```
 Explanation:
 
