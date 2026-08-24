@@ -8,8 +8,8 @@ Spring Boot offers powerful tools for managing data binding and validation throu
 This article will introduce these concepts in a beginner-friendly manner, providing a solid foundation for their application in real-world scenarios.
 
 What is Data Binding?
-Data binding is the process of transferring data between a user interface and the server-side application. In the context of web applications, 
 
+Data binding is the process of transferring data between a user interface and the server-side application. In the context of web applications, 
 this means mapping form data from an HTML form to a Java object on the server. Spring Boot simplifies this process through the use of @ModelAttribute.
 
 Understanding @ModelAttribute
