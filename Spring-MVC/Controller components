@@ -1,0 +1,142 @@
+Controller Components
+Spring Controller Components
+Spring MVC (Model-View-Controller) is a powerful framework that simplifies the development of web applications by providing various components to handle different aspects of the application. In this article, we'll dive into the core components related to controllers in Spring, such as @Controller, @RestController, @RequestMapping, @PathVariable, and @RequestParam. We'll also include examples to help you understand how these components work together.
+
+1. Understanding @Controller
+The @Controller annotation in Spring is used to define a controller class. A controller in Spring is responsible for handling incoming web requests, processing them, and returning a response, typically in the form of a view (like a JSP page).
+
+Example:
+@Controller
+public class HomeController {
+
+    @RequestMapping("/home")
+    public String showHomePage(Model model) {
+        model.addAttribute("message", "Welcome to the Home Page!");
+        return "home"; // This refers to home.jsp or another view
+    }
+}
+Explanation:
+
+The @Controller annotation marks the HomeController class as a Spring MVC controller.
+The @RequestMapping("/home") annotation maps the /home URL to the showHomePage method.
+The method returns a view name ("home") that will be resolved to an actual view (like home.jsp).
+2. Exploring @RestController
+The @RestController annotation is a specialized version of @Controller. It combines @Controller and @ResponseBody, meaning that instead of returning a view, it returns the response body directly, typically in JSON or XML format.
+
+Example:
+@RestController
+public class ApiController {
+
+    @RequestMapping("/api/greeting")
+    public String getGreeting() {
+        return "Hello, World!";
+    }
+}
+Explanation:
+
+The @RestController annotation indicates that the controller's methods will return data directly, rather than a view.
+When a request is made to /api/greeting, the getGreeting method returns the string "Hello, World!" as the response body.
+3. The Role of @RequestMapping
+The @RequestMapping annotation is used to map web requests to specific handler methods. It can be applied at both the class and method levels.
+
+Example:
+@Controller
+@RequestMapping("/user")
+public class UserController {
+
+    @RequestMapping("/profile")
+    public String userProfile(Model model) {
+        model.addAttribute("username", "JohnDoe");
+        return "profile";
+    }
+
+    @RequestMapping("/settings")
+    public String userSettings(Model model) {
+        model.addAttribute("setting", "Dark Mode");
+        return "settings";
+    }
+}
+Explanation:
+
+The @RequestMapping("/user") annotation at the class level indicates that all methods within this controller will handle requests that start with /user.
+The userProfile method handles requests to /user/profile, while the userSettings method handles requests to /user/settings.
+4. Using @PathVariable
+The @PathVariable annotation is used to extract values from the URI path. This is particularly useful when the value of the variable is part of the URL itself.
+
+Example:
+@RestController
+@RequestMapping("/api")
+public class ProductController {
+
+    @RequestMapping("/product/{id}")
+    public String getProductById(@PathVariable("id") int productId) {
+        return "Product ID: " + productId;
+    }
+}
+Explanation:
+
+The @PathVariable("id") annotation binds the value from the URI (/product/{id}) to the method parameter productId.
+When a request is made to /api/product/5, the method returns "Product ID: 5".
+5. Working with @RequestParam
+The @RequestParam annotation is used to extract query parameters from the URL. It allows you to pass additional data in the URL, which can be optional or required.
+
+Example:
+@RestController
+@RequestMapping("/api")
+public class SearchController {
+
+    @RequestMapping("/search")
+    public String search(@RequestParam("query") String query) {
+        return "Search results for: " + query;
+    }
+}
+Explanation:
+
+The @RequestParam("query") annotation binds the query parameter from the URL to the method parameter query.
+When a request is made to /api/search?query=spring, the method returns "Search results for: spring".
+6. Combining Components
+Let's see an example that combines several of these components to create a more complex controller:
+
+@RestController
+@RequestMapping("/api")
+public class OrderController {
+
+    @RequestMapping("/order/{id}")
+    public String getOrder(@PathVariable("id") int orderId, @RequestParam(value = "details", required = false) String details) {
+        if (details != null) {
+            return "Order ID: " + orderId + ", Details: " + details;
+        }
+        return "Order ID: " + orderId;
+    }
+Explanation:
+
+The getOrder method uses both @PathVariable to capture the orderId from the URL path and @RequestParam to capture the optional details query parameter.
+If details is provided in the request (e.g., /api/order/10?details=full), the method returns "Order ID: 10, Details: full". Otherwise, it returns "Order ID: 10".
+In this article, we explored the essential controller components in Spring MVC, such as @Controller, @RestController, @RequestMapping, @PathVariable, and @RequestParam. We covered how these annotations work individually to map requests, handle URL paths, extract query parameters, and return either views or response data. Through examples, we demonstrated how to use these components effectively in web applications, showing how they can be combined to create flexible and dynamic request handling in Spring MVC.
+
+Want to Master Spring Boot and Land Your Dream Job?
+Struggling with coding interviews? Learn Data Structures & Algorithms (DSA) with our expert-led course. Build strong problem-solving skills, write optimized code, and crack top tech interviews with ease
+
+Last updated on Dec 27, 2024
+
+Was it helpful?
+Subscribe to our newsletter
+Read articles from Coding Shuttle directly inside your inbox. Subscribe to the newsletter, and don't miss out.
+
+Enter your email address
+Table of contents
+
+
+
+#BetterEveryday
+follow us on
+company
+Resources
+Courses
+Popular Handbooks
+Online Compilers
+DSA Sheets
+Mock Tests
+Copyright © NGU Education Pvt. Ltd.
+
+Controller Components | Coding Shuttle
