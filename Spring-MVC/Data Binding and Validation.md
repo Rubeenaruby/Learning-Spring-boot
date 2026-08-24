@@ -1,8 +1,7 @@
 Data Binding and Validation
 
-Data Binding and Validation in Spring Boot: 
+Data Binding and Validation in Spring Boot: Using @ModelAttribute, @Valid, and Validation Annotations
 
-Using @ModelAttribute, @Valid, and Validation Annotations
 In modern web applications, handling user input effectively is crucial for a smooth user experience and data integrity.
 Spring Boot offers powerful tools for managing data binding and validation through annotations like @ModelAttribute, @Valid, and validation annotations. 
 This article will introduce these concepts in a beginner-friendly manner, providing a solid foundation for their application in real-world scenarios.
