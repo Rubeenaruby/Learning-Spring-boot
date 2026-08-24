@@ -1,7 +1,9 @@
 Controller Components
+
 Spring Controller Components
-Spring MVC (Model-View-Controller) is a powerful framework that simplifies the development of web applications by providing various components to handle different
-aspects of the application. In this article, we'll dive into the core components related to controllers in Spring, such as @Controller, 
+
+Spring MVC (Model-View-Controller) is a powerful framework that simplifies the development of web applications by providing various components to handle different aspects of the application. In this article, we'll dive into the core components related to controllers in Spring, such as @Controller, 
+
 @RestController, @RequestMapping, @PathVariable, and @RequestParam. We'll also include examples to help you understand how these components work together.
 
 1. Understanding @Controller
