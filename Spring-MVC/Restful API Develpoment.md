@@ -21,12 +21,15 @@ Client-Server Separation: The client and server are independent and can evolve s
 
 1. Visit  and generate the employee service project and open in Intellij
 We wil be building simple employee service with basic crud operations.
+<img width="1679" height="1008" alt="image" src="https://github.com/user-attachments/assets/c6ed8e72-d277-4dac-b0f7-45b1df95f9a7" />
 
 Spring boot initializer
 
 2. Crete the following folders and files under your package 
 Directory Structure of Spring Boot Employee applcation
-3. Configuring Postgres Database
+<img width="415" height="907" alt="image" src="https://github.com/user-attachments/assets/8e0fdb14-1c5c-4fd7-963d-00e1f7ae1819" />
+
+4. Configuring Postgres Database
 spring.application.name=TestingApp
 
 #Port configuration
