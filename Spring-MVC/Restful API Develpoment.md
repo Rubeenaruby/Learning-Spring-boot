@@ -281,16 +281,26 @@ This advice handles ResourceNotFoundException and RuntimeException, ensuring tha
 12. Now Open post man to test our apis
 1. Create Employee
 Run your application, after running you can see in console the hibernate DDL queries to create the employee table.
+<img width="1679" height="1049" alt="image" src="https://github.com/user-attachments/assets/e17457c7-d58f-4576-91eb-d74d512eb912" />
 
 Employee table DDL query
-Now go to post man and hit the create employee endpoint
+<img width="1247" height="678" alt="image" src="https://github.com/user-attachments/assets/b3aa849f-b9d2-4220-8eb4-a465763a3bcc" />
 
+Now go to post man and hit the create employee endpoint
+<img width="1247" height="678" alt="image" src="https://github.com/user-attachments/assets/11120513-cc9b-45d9-b4fe-ed8fd29f99f9" />
+(Or we can also go on Thunder Client in VS-Code)
 Create Employee
 2. Get Employee by id
+<img width="1219" height="550" alt="image" src="https://github.com/user-attachments/assets/7bd8edd2-4ff8-44f6-9b0b-1d7f19367190" />
+
 Get Employee by id
 3. Update Employee by id
+<img width="1244" height="565" alt="image" src="https://github.com/user-attachments/assets/70406045-c583-4c8d-8bcb-91cd45e65a14" />
+
 Update Employee by id
 4. Delete Employee by id
+<img width="1247" height="527" alt="image" src="https://github.com/user-attachments/assets/339435e4-8cca-41de-bb70-791223b3ceae" />
+
 Delete Employee by id
 In this article, we covered the essential steps for building a RESTful API in Spring Boot, including setting up a basic
 project, configuring a database, creating entity classes, and implementing CRUD operations through controllers and services. 
