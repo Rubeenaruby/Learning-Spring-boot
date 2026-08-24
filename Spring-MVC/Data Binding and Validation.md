@@ -129,9 +129,11 @@ Create result.html to show registered users details
 ```
 Run the application and hit the endpoint on browser
 Enter invalid values and in field you will see the errors.
+<img width="1916" height="1029" alt="image" src="https://github.com/user-attachments/assets/ad027aeb-40cb-4984-8aca-919fb2bc34ad" />
 
 Registration error page
 After Entering the valid values in field you will be redirected to result page .
+<img width="1913" height="1029" alt="image" src="https://github.com/user-attachments/assets/2b19c402-d49c-4b1a-b434-218edb656671" />
 
 Registration success page
 In this article, we explored the crucial concepts of data binding and validation in Spring Boot using annotations like @ModelAttribute, @Valid, 
