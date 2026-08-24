@@ -1,22 +1,25 @@
 Spring MVC Explained: Architecture & Request Flow Diagram
+
 Spring MVC Architecture
+
 Spring MVC (Model-View-Controller) is a popular framework within the Spring ecosystem used to build web applications. 
 It follows the Model-View-Controller design pattern, which helps in separating the business logic, presentation logic,
 and navigation logic, thus making the code more manageable and scalable.
 
+<img width="602" height="373" alt="image" src="https://github.com/user-attachments/assets/ce2ead1c-59a5-4f86-b93c-c18d66eef1da" />
+
 Spring MVC Flow
 1. Introduction to Spring MVC Architecture
 The Spring MVC architecture is designed to streamline the development of web applications by providing a clear separation
- of concerns. It follows the MVC design pattern, where:
+ of concerns. It follows the MVC design pattern,
+where:
 
 Model represents the application data and business logic.
 View is responsible for rendering the user interface.
 Controller handles user requests and coordinates between the Model and the View.
+
 In Spring MVC, the architecture revolves around a central component called the DispatcherServlet, 
 which acts as the front controller. It delegates requests to appropriate controllers, based on the configured HandlerMapping, and returns a ModelAndView object to be rendered by a ViewResolver.
-
-<img width="602" height="373" alt="image" src="https://github.com/user-attachments/assets/ce2ead1c-59a5-4f86-b93c-c18d66eef1da" />
-
 
 2. Understanding the DispatcherServlet
 The DispatcherServlet is the core of Spring MVC architecture. It acts as the front controller, managing all incoming HTTP requests and routing them to appropriate handlers or controllers.
@@ -30,6 +33,7 @@ Finds the Handler: It uses HandlerMapping to determine the appropriate handler (
 Executes the Handler: Once the handler is determined, DispatcherServlet calls the corresponding controller method.
 Returns the Model and View: The controller returns a ModelAndView object, which contains the model data and the view name.
 Renders the View: DispatcherServlet uses ViewResolver to render the view based on the ModelAndView object.
+```java
 @Controller
 public class HomeController {
 
@@ -41,6 +45,7 @@ public class HomeController {
         return mav;
     }
 }
+```
 In this example, when a request is made to /home, DispatcherServlet forwards the request to HomeController, which returns a ModelAndView object with a view name home and a model containing a message.
 
 3. HandlerMapping: Mapping Requests to Handlers
@@ -53,6 +58,7 @@ SimpleUrlHandlerMapping: Allows mapping of URL patterns to specific controller b
 Example:
 Consider the following HandlerMapping configuration using RequestMappingHandlerMapping:
 
+```java
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -63,6 +69,7 @@ public class UserController {
         return "profile";
     }
 }
+```
 Here, the HandlerMapping maps the /user/profile URL to the userProfile method in UserController.
 
 4. ModelAndView: Combining Model and View
@@ -73,6 +80,7 @@ View: The view is the name of the JSP, Thymeleaf, or any other template that sho
 Example:
 Let's revisit the earlier example:
 
+```java
 @RequestMapping("/home")
 public ModelAndView home() {
     ModelAndView mav = new ModelAndView();
@@ -80,6 +88,7 @@ public ModelAndView home() {
     mav.addObject("message", "Welcome to Spring MVC!");
     return mav;
 }
+```
 In this example, the home method returns a ModelAndView object. The model contains a message, and the view is set to home.
 This means that when the request is processed, the home.jsp view will be rendered with the model data.
 
@@ -92,18 +101,17 @@ which resolves view names to JSP files located in a specific directory.
 Example:
 Here is how you can configure InternalResourceViewResolver in a Spring configuration file:
 
+```java
 @Configuration
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
-
-    @Bean
-    public InternalResourceViewResolver viewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/views/");
-        resolver.setSuffix(".jsp");
-        return resolver;
-    }
-}
+@Bean
+public InternalResourceViewResolver viewResolver() {
+InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+resolver.setPrefix("/WEB-INF/views/");
+resolver.setSuffix(".jsp");
+return resolver;
+```
 With this configuration, if a controller returns a view name home, InternalResourceViewResolver will resolve it to 
 /WEB-INF/views/home.jsp.
 
@@ -119,16 +127,24 @@ Select Maven Archetype and archetype as webapp
 Select Maven and click Next.
 Enter the GroupId (e.g., com.example) and ArtifactId (e.g., springmvc-basic).
 Click Finish.
+
+<img width="991" height="973" alt="image" src="https://github.com/user-attachments/assets/6326477b-d6f0-4d39-a630-bede11f0688b" />
+
 New Maven Web Project
 Directory Structure: Once the project is created, your directory structure will look like this:
+<img width="508" height="713" alt="image" src="https://github.com/user-attachments/assets/d03a1dfb-f27c-4eac-9411-0c5aa2ae99a1" />
+
 
 Directory structure of spring boot web project
 Make sure you have installed Tomcat server 
+<img width="1208" height="898" alt="image" src="https://github.com/user-attachments/assets/c11c4f9d-fb5d-4f0b-ace0-97ba20ea7a36" />
+
 Installing Tomcat Plugin in Intellij
 on system and plugin in Intellij , required to run application.
 1.2 Adding Dependencies
 In your pom.xml, add the following dependencies to include Spring MVC and Servlet API:
 
+```
 <dependencies>
     <!-- Spring MVC Dependency -->
     <dependency>
@@ -153,6 +169,7 @@ In your pom.xml, add the following dependencies to include Spring MVC and Servle
         <scope>provided</scope>
     </dependency>
 </dependencies>
+```
 This configuration will download the required Spring MVC libraries and the Servlet API needed to run the application.
 
 2. Configuring the Project
@@ -161,6 +178,7 @@ Next, we need to configure the essential files that Spring MVC requires to funct
 2.1 Configuring web.xml
 The web.xml file, also known as the deployment descriptor, is located in the WEB-INF directory and is crucial for configuring the DispatcherServlet.
 
+```
 <web-app xmlns="<http://java.sun.com/xml/ns/javaee>"
          xmlns:xsi="<http://www.w3.org/2001/XMLSchema-instance>"
          xsi:schemaLocation="<http://java.sun.com/xml/ns/javaee>
@@ -184,6 +202,7 @@ The web.xml file, also known as the deployment descriptor, is located in the WEB
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>
+```
 Here’s what this configuration does:
 
 DispatcherServlet: The DispatcherServlet is configured with the name dispatcher. It will look for a configuration 
@@ -194,6 +213,7 @@ Next, we need to create the dispatcher-servlet.xml file, where we will define th
 
 Create the dispatcher-servlet.xml file in the WEB-INF directory and add the following content:
 
+```
 <beans xmlns="<http://www.springframework.org/schema/beans>"
        xmlns:xsi="<http://www.w3.org/2001/XMLSchema-instance>"
        xmlns:context="<http://www.springframework.org/schema/context>"
@@ -217,6 +237,7 @@ Create the dispatcher-servlet.xml file in the WEB-INF directory and add the foll
         <property name="suffix" value=".jsp"/>
     </bean>
 </beans>
+```
 Explanation:
 
 Annotation-Driven Controllers: The <mvc:annotation-driven/> tag enables the use of annotations like @Controller and @RequestMapping in your project.
@@ -228,7 +249,7 @@ With the configuration in place, it’s time to write your first Spring MVC cont
 
 3.1 Creating a Controller
 Create a new package controller under java source file under main folder and add a class HomeController:
-
+```java
 package controller;
 
 import org.springframework.stereotype.Controller;
@@ -236,7 +257,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+ @Controller
 public class HomeController {
 
     @RequestMapping("/home")
@@ -253,6 +274,7 @@ public class HomeController {
         return mav;
     }
 }
+```
 Explanation:
 
 @Controller: This annotation marks the class as a controller component.
