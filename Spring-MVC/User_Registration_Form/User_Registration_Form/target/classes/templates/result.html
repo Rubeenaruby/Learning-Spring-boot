@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="<http://www.thymeleaf.org>" lang="en">
+<head>
+    <title>Registration Result</title>
+</head>
+<body>
+<h1 th:text="${commonTitle}">User Registration</h1>
+<h1>Registration Successful!</h1>
+
+<p>Here are the details you submitted:</p>
+<ul>
+    <li><strong>Name:</strong> <span th:text="${user.name}"></span></li>
+    <li><strong>Email:</strong> <span th:text="${user.email}"></span></li>
+    <li><strong>Age:</strong> <span th:text="${user.age}"></span></li>
+</ul>
+
+<a href="/register">Go back to registration form</a>
+</body>
+</html>
