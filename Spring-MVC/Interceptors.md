@@ -100,6 +100,8 @@ Start your Spring Boot application and make a few requests to test your intercep
 that the interceptor's methods are being called at different stages of request processing.
 
 Eg:-
+<img width="552" height="208" alt="image" src="https://github.com/user-attachments/assets/bfc46453-0828-4831-a9e7-752eedfb15c8" />
+
 
 Interceptor logs
 In this article, we explored the concept of interceptors in Spring Boot, highlighting their importance and practical applications.
