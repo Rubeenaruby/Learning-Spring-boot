@@ -21,11 +21,12 @@ The JpaRepository interface provides out-of-the-box methods for all the common C
 queries manually.
 
 Here’s how you can extend JpaRepository:
-
+```
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
 }
+```
 
 JpaRepository provides:
 save(): Saves an entity.
