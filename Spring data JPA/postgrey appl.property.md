@@ -1,0 +1,9 @@
+spring.application.name=LearningRestApi (This is a project name)
+server.port=8081
+spring.datasource.url=jdbc:postgresql://localhost:5432/LearningRest
+spring.datasource.username=postgres
+spring.datasource.password=Ruby
+spring.datasource.driverClassName=org.postgresql.Driver
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
