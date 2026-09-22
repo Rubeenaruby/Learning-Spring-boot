@@ -42,8 +42,11 @@ employee.setSalary(50000);
 entityManager.persist(employee);
 ```
 JPA handles much of the SQL generation and object-relational mapping.
+
 2. ORM
+
 ORM = Object Relational Mapping
+
 It maps:
 ```
 Java                  Database
