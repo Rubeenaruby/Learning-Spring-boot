@@ -108,7 +108,7 @@ Caching
  ↓
 Specifications / advanced querying
 ```
-5. @Entity
+4. @Entity
 
 @Entity tells JPA:
 This Java class represents a database table.
@@ -298,12 +298,15 @@ ACTIVE
 INACTIVE
 ```
 Prefer STRING rather than ordinal.
+
 Avoid:
 ```
 @Enumerated(EnumType.ORDINAL)
 ```
 because changing enum order can corrupt the meaning of stored values.
+
 12. Date and Time
+13. 
 Modern Java time classes work well with JPA:
 ```
 private LocalDate joiningDate;
@@ -327,7 +330,9 @@ public class Employee {
 }
 ```
 13. EntityManager
+14. 
 One of the most important JPA concepts.
+
 EntityManager manages entities and their persistence lifecycle.
 ```
 @PersistenceContext
@@ -344,7 +349,9 @@ detach()
 flush()
 ```
 14. persist()
+
 Used to make a new entity persistent.
+
 ```
 Employee employee = new Employee();
  
@@ -365,6 +372,7 @@ INSERT
 Database
 ```
 15. find()
+
 Find an entity by primary key.
 ```
 Employee employee =
@@ -377,6 +385,7 @@ FROM employee
 WHERE id = 1;
 ```
 16. remove()
+
 Deletes an entity.
 ```
 Employee employee =
@@ -390,6 +399,7 @@ DELETE FROM employee
 WHERE id = 1;
 ```
 17. merge()
+
 Used to merge the state of a detached entity into the persistence context.
 ```
 Employee managedEmployee =
@@ -398,8 +408,11 @@ Employee managedEmployee =
 Important interview point:
 merge() does not make the original object managed.
 It returns a managed instance.
+
 18. Persistence Context
+
 This is one of the most important JPA concepts.
+
 A persistence context is essentially a managed collection of entity instances.
 Think:
 ```
