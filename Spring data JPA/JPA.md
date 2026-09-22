@@ -79,6 +79,7 @@ id | name     | salary
 ```
 3. Important JPA Concepts
 You should learn these in this order:
+```
 Entity
  ↓
 EntityManager
@@ -106,7 +107,8 @@ Locking
 Caching
  ↓
 Specifications / advanced querying
-4. @Entity
+```
+5. @Entity
 
 @Entity tells JPA:
 This Java class represents a database table.
