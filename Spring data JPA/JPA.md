@@ -442,7 +442,9 @@ SET salary = 70000
 WHERE id = 1;
 ```
 This is called dirty checking.
+
 19. Entity Lifecycle
+
 An entity can be in different states:
 ```
 Transient
@@ -505,7 +507,9 @@ SET salary = 80000
 WHERE id = 1
 ```
 You don't explicitly call an update method.
+
 21. Flush
+
 flush() synchronizes the persistence context with the database.
 ```
 entityManager.flush();
@@ -515,11 +519,17 @@ Important:
 flush ≠ commit
 ```
 Flush means:
+
 Send pending SQL changes to the database.
+
 Commit means:
+
 Complete the transaction.
+
 22. Transactions
+
 Database operations should normally happen inside transactions.
+
 Spring:
 ```
 @Transactional
@@ -541,9 +551,13 @@ INSERT employee
 COMMIT
 ```
 If an appropriate failure occurs:
+
 ROLLBACK
+
 23. Relationships
+
 This is a huge JPA topic.
+
 Four major relationships:
 ```
 @OneToOne
@@ -552,6 +566,7 @@ Four major relationships:
 @ManyToMany
 ```
 24. @OneToOne
+
 Example:
 ```
 Employee ───── Passport
@@ -570,6 +585,7 @@ public class Employee {
 }
 ```
 26. @ManyToOne
+
 Very common in real applications.
 ```
 Department
