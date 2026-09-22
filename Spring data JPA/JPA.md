@@ -3,6 +3,7 @@ standard API used to map Java objects to relational database tables.
 
 Complete Jakarta Persistence API (JPA) Roadmap
 Think of the stack like this:
+```
 Your Java Application
         ↓
 Spring Data JPA
@@ -14,6 +15,7 @@ Hibernate ORM
 JDBC
         ↓
 MySQL / PostgreSQL / Oracle
+```
 JPA is a specification, not an implementation.
 Hibernate is an implementation of JPA.
 1. What is Jakarta Persistence?
