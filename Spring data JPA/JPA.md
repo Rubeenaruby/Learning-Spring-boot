@@ -19,7 +19,9 @@ MySQL / PostgreSQL / Oracle
 JPA is a specification, not an implementation.
 Hibernate is an implementation of JPA.
 1. What is Jakarta Persistence?
+
 Jakarta Persistence (formerly Java Persistence API) is a specification for storing Java objects in relational databases.
+
 Without JPA:
 ```
 String sql = "INSERT INTO employee(name, salary) VALUES (?, ?)";
