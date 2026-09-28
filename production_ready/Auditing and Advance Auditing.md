@@ -16,23 +16,34 @@ A real-life analogy for auditing in an application is a security camera system i
 Here’s how it relates:
 
 Tracking Actions: Just as a security camera records who enters or leaves a building and what activities occur, auditing records who created, updated, or deleted data in your system.
+
 Time Stamping: Security cameras store the exact time and date of every event, similar to how auditing automatically logs timestamps for when a record was created or modified.
+
 Accountability: If something goes wrong or is suspicious (like a break-in), you can review the footage to see who was responsible. Similarly, in an application, auditing allows you to see who made changes to data, helping ensure accountability.
 Monitoring and Reviewing: In both cases, whether it's security footage or audit logs, you can go back and review the logs when needed for investigations or compliance.
+
 Just like a building’s security system helps protect and keep track of activity within a building, auditing helps safeguard data and maintain a detailed record of changes within an application.
 
 Benefit of Using Auditing in an Application
+
 The primary benefit of using auditing in an application is enhanced data tracking and accountability. Here are some key advantages:
 
 Change History: Auditing allows you to maintain a record of changes made to data, including who made the change and when it occurred. This is crucial for understanding the lifecycle of data and can help with troubleshooting.
+
 Regulatory Compliance: Many industries have regulations that require tracking changes to sensitive data. Auditing can help meet these compliance requirements.
+
 Accountability: By recording who performed actions on data, auditing promotes accountability within the organization. This can deter unauthorized changes and help identify issues quickly.
+
 Data Integrity: Auditing can assist in maintaining the integrity of the data by providing a way to trace back changes, allowing for data recovery or correction if necessary.
+
 User Activity Monitoring: It provides insights into user behavior and patterns, which can be valuable for security audits and improving user experience.
+
 Reporting and Analysis: Auditing data can be used for reporting purposes, enabling analysis of how often certain data is accessed or modified.
+
 Overall, auditing enhances the reliability and trustworthiness of your application by providing a transparent view of data changes and user interactions.
 
 Steps to Add Auditing
+
 Enable JPA Auditing:
 
 Add the @EnableJpaAuditing annotation to a configuration class to activate the auditing feature.
@@ -224,12 +235,17 @@ public class MapperConfig {
 }
 ```
 Code Implementation of Update Information
+
 Auditing for updating information involves tracking changes made to an entity by automatically capturing relevant metadata. In this context, fields like @CreatedDate, @CreatedBy, @LastModifiedDate, and @LastModifiedBy serve specific purposes:
 
 @CreatedDate: This field records the timestamp when the entity was first created, providing a reference for when the data was added to the system.
+
 @CreatedBy: This field captures the identity of the user who created the entity, enhancing accountability by linking actions to specific users.
+
 @LastModifiedDate: This field tracks the most recent timestamp when the entity was updated, allowing you to know when changes occurred last.
+
 @LastModifiedBy: This field records the identity of the user who last modified the entity, helping to maintain an audit trail of changes over time.
+
 Together, these auditing fields facilitate effective monitoring of data changes, ensuring transparency and accountability within the application. They provide valuable insights for compliance, troubleshooting, and understanding the history of data modifications.
 
 If we want to update anything, such as the title, description, or both, we need to use the @PutMapping. Here’s the controller and service layer code.
@@ -297,12 +313,15 @@ public class ProductService {
 }
 ```
 Output
+
 PostMan:
+
 <img width="1220" height="490" alt="image" src="https://github.com/user-attachments/assets/3dff246a-1688-4196-8ba3-3dd5a8317e4f" />
 
 This section can include the expected response or result from a request made via Postman, such as the JSON response body, status code, and any relevant headers.
 
 Image of creating a new product in postman
+
 Databse:
 
 Here, you can describe the expected changes in the database after the operation, including updated records, new entries, or any relevant queries to demonstrate the data state.
@@ -311,20 +330,29 @@ Before Update id 3
 <img width="1155" height="238" alt="image" src="https://github.com/user-attachments/assets/6d496c97-093c-45d4-928c-75e7509b2ade" />
 
 Image of dbeaver before updating id 3
+
 After Update id 3
+
 <img width="1151" height="286" alt="image" src="https://github.com/user-attachments/assets/c1386f15-01f0-489c-a3f0-2f84cbe5c611" />
 
 Image of dbeaver after updating id 3
+
 Internal working of Auditing
+
 The auditing feature in Spring Boot automates the tracking of entity changes by leveraging lifecycle event listeners and the AuditorAware interface to capture user and timestamp information seamlessly. This approach enhances data integrity and accountability in your application without requiring additional boilerplate code.
 
 Entity Lifecycle Events:
 
 When an entity is persisted or updated, the AuditingEntityListener is triggered.
+
 This listener handles the following lifecycle events:
+
 @PrePersist: This method is called before an entity is saved for the first time. During this phase, the listener populates the fields annotated with @CreatedDate and @CreatedBy.
+
 @PreUpdate: This method is invoked before an entity is updated. It sets the fields annotated with @LastModifiedDate and @LastModifiedBy.
+
 @PreRemove: This method is called before the entity manager executes the remove() operation on the entity. It is an appropriate place for implementing any necessary cleanup or validation logic.
+
 AuditorAware Interface:
 
 The AuditorAware interface is crucial for providing the current user’s information during the auditing process.
@@ -442,54 +470,96 @@ public class ProductEntity extends AuditableEntity{
 Output
 
 After running the application, we can observe that the relevant tables, including the audit tables created by Hibernate Envers, appear in our database. This confirms that the auditing features have been successfully integrated.
-<img width="1206" height="600" alt="image" src="https://github.com/user-attachments/assets/06279168-ff34-4b54-bd09-c7925a7663a4" />
+<img width="333" height="195" alt="image" src="https://github.com/user-attachments/assets/4189f711-0072-4f13-bd41-7238b9e8b531" />
+
 
 Hibernate Envers audit tables created
+
 PostMan
+
 Post Request
+<img width="1217" height="472" alt="image" src="https://github.com/user-attachments/assets/b7553b0c-ca15-4888-9e6b-6572cdfc216d" />
+
 Image of post request
+
 Put Request
+<img width="1217" height="456" alt="image" src="https://github.com/user-attachments/assets/f73033eb-3db5-4cd4-a744-dca7701b623a" />
+
 Image of put mapping
+
 Database
-<img width="1316" height="318" alt="image" src="https://github.com/user-attachments/assets/d05ec53c-6067-4c29-9cf2-bed078723ea9" />
+<img width="1315" height="279" alt="image" src="https://github.com/user-attachments/assets/b70ced39-9aa8-41cd-8f86-58c7bc5958c6" />
+
 
 Products with createdDat, createdBy and updatedDate, updatedBy.
+
 Table of products_aud
+
        Table of revinfo.
 
 Table of revinfo
+
+<img width="1315" height="333" alt="image" src="https://github.com/user-attachments/assets/5541c223-a67d-46ac-b826-19a7f5cf8f26" />
+
 When to Use Hibernate Envers:
 Data Auditing:
+
 When your application requires a history of changes made to entity data, such as in financial applications, content management systems, or any data-driven application where accountability is important.
+
 Regulatory Compliance:
+
 If you need to comply with legal or regulatory requirements that mandate tracking changes to data (e.g., healthcare, finance), Envers provides a straightforward way to maintain an audit trail.
+
 Version Control:
+
 When you need to keep track of different versions of an entity. This is useful for applications that need to provide the ability to roll back to previous states or review historical data.
+
 Data Recovery:
+
 In scenarios where data might be accidentally deleted or modified, having a historical record allows for easy restoration of previous states.
+
 Change Tracking:
+
 When you want to monitor who changed what and when, providing accountability and traceability for user actions in the application.
+
 Why Use Hibernate Envers:
+
 Automatic Change Tracking:
+
 Envers automates the process of auditing by creating and managing audit tables, reducing the manual overhead associated with tracking changes.
+
 Minimal Configuration:
+
 Integrating Envers into your Hibernate application requires minimal setup, making it easy to add auditing features without extensive code changes.
+
 Query Historical Data:
+
 Envers provides a convenient API to query past versions of entities, allowing developers to easily access historical data without complex queries.
+
 Customizable Auditing:
+
 You can customize which fields to audit, ignore specific changes, and define custom revision entities to capture additional metadata.
 Seamless Integration:
+
 Envers integrates seamlessly with Hibernate, so you can continue using your existing entity model without significant alterations.
 Limitation
-Complexity and Overhead: It introduces additional complexity and a learning curve, and may impact performance in high-transaction environments.
-Limited Flexibility: Some projects require highly customized auditing solutions that Envers may not provide.
-Not Always Necessary: For simpler applications, the added complexity of Envers may be unnecessary, especially if existing solutions are in place.
-Database Schema Changes: Adding audit tables can complicate database migrations and management.
-Development and Maintenance: Maintaining audit tables can create operational overhead and manage data volume.
-Compatibility Issues: Potential integration challenges with other frameworks may lead developers to seek alternative solutions.
-Create Some APIs for Admin
-Controller
 
+Complexity and Overhead: It introduces additional complexity and a learning curve, and may impact performance in high-transaction environments.
+
+Limited Flexibility: Some projects require highly customized auditing solutions that Envers may not provide.
+
+Not Always Necessary: For simpler applications, the added complexity of Envers may be unnecessary, especially if existing solutions are in place.
+
+Database Schema Changes: Adding audit tables can complicate database migrations and management.
+
+Development and Maintenance: Maintaining audit tables can create operational overhead and manage data volume.
+
+Compatibility Issues: Potential integration challenges with other frameworks may lead developers to seek alternative solutions.
+
+Create Some APIs for Admin
+
+Controller
+```
 package com.example.user.product_ready_features.product_ready_features.controllers;
 
 import com.example.user.product_ready_features.product_ready_features.entities.ProductEntity;
@@ -523,14 +593,20 @@ public class AuditController {
 
     }
 }
+```
 Output
 
 After running the application.
+<img width="1206" height="600" alt="image" src="https://github.com/user-attachments/assets/b41ed70a-7376-4b58-bac8-66f3ffbd04c3" />
 
 PostMan: If you create a new product and update its information by hitting the GET/audit/products/{id} endpoint, you can view all the related data, including the updated product details.
 Image of getting list of creating and updating product by id
-Database: 
+Database:
+<img width="1316" height="318" alt="image" src="https://github.com/user-attachments/assets/9962ab30-ca10-4e0b-85d8-ef1c83b456ba" />
+
 Image of dbeaver
+
 Conclusion
+
 This article explains how to implement auditing and advanced auditing using Hibernate Envers in Spring Boot to track changes in 
 data and maintain accountability. It covers enabling JPA auditing, using AuditorAware for user tracking, and integrating Hibernate Envers for entity versioning. The focus is on improving security, compliance, and traceability within applications.
