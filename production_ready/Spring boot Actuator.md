@@ -26,6 +26,7 @@ To install Spring Boot Actuator, you can add the following dependency to your po
 </dependency>
 ```
 After adding this dependency, reload the maven. And go to this url http://localhost:8080/actuator
+<img width="814" height="392" alt="image" src="https://github.com/user-attachments/assets/a4927ac4-d5e6-4508-b47c-ef558b7fbdd9" />
 
 Browser image
 You can configure the actuator endpoints in your application.properties or application.yml file. For example, to enable all endpoints,
@@ -34,6 +35,7 @@ you can add: management.endpoints.web.exposure.include=*
 This will expose all available actuator endpoints, allowing you to access information about your application, such as health checks,
 metrics, and environment details. You can then access these endpoints via HTTP, usually at /actuator 
 (e.g., http://localhost:8080/actuator/health).
+<img width="229" height="118" alt="image" src="https://github.com/user-attachments/assets/5b3c8190-1d4b-4866-9d4b-eac6405ce466" />
 
 Browser image
 Remember to secure these endpoints in production to prevent unauthorized access!
@@ -61,6 +63,7 @@ Actuator Endpoints
 indicating whether everything is functioning correctly.
 /actuator/info: Displays application information, which can be customized through Spring environment properties (e.g., version, 
 description).
+
 Custom Configuration
 
 management.endpoints.web.exposure.include=*
@@ -71,10 +74,12 @@ info.ABCD=WXYZ
 
 Url
 
+<img width="360" height="212" alt="image" src="https://github.com/user-attachments/assets/c63312c4-d1db-4f9b-bf59-1b4472e12564" />
 
 Output
 
 Browser image
+
 /actuator/mappings: Lists all the @RequestMapping paths in the application, providing an overview of available endpoints and their configurations.
 /actuator/threaddump: Provides a thread dump of the application, which can be useful for diagnosing performance issues by examining the state of threads at a given moment.
 These endpoints help monitor and manage your application effectively, making it easier to diagnose issues and understand its behavior.
